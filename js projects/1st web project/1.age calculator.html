@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="hindi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&display=swap" rel="stylesheet">
+    <style>
+       *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family:sans-serif;
+        
+       }
+       .content{ 
+        background: linear-gradient(135deg, rgb(68, 68, 209),rgb(195, 185, 185));
+        color: white;
+        font-size: large;
+        width: 100%;
+        min-height: 100vh;
+        padding: 12px;
+       }
+       .calculator{
+        width: 100%;
+        max-width: 600px;
+        margin-top: 10%;
+        margin-left: 10%;
+       }
+       .calculator h1 {
+        font-size: 60px;
+       }
+       .input{
+        margin-top: 30px;
+        padding: 10px;
+        background-color: rgb(255,255,255,0.3);
+        border-radius: 5px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        width: 100%;
+       }
+       .input input{
+        flex: 1;
+        margin-right: 20px;
+        padding: 14px 20px;
+        border: 0;
+        outline: 0;
+        border-radius: 5px;
+        font-size: 18px;
+        cursor: pointer;
+     }
+     .input button{
+        background-color: yellow;
+        font-size: 18px;
+        padding: 10px 20px;
+        border-radius: 10px;
+        cursor: pointer;
+     }
+       .calculator h1 span{
+        color: yellow;
+       }
+       #result{
+        letter-spacing: 1px;
+        margin-top: 40px;
+        font-size: 18px;
+        word-wrap: break-word;
+       }
+       #result span{
+        color: yellow;
+       }
+       @media screen and (max-width:750px) {
+       .calculator{
+        margin-top: 2px;
+        margin-left: 2px;
+       }
+    }
+       
+    </style>
+</head>
+<body>
+    <div class="content">
+        
+        <div class="calculator">
+            <h1>JavaScript <br> <span> Age calculator</span></h1>
+
+            <div class="input">
+                <input type="date" id="date">
+                <button onclick="calculateAge()" >Calculate</button>
+            </div>
+            <p id="result"></p>
+        </div>
+    </div>
+
+    <script>
+        let userdate=document.getElementById("date");
+        userdate.max=new Date().toISOString().split("T")[0];
+        function calculateAge(){
+            let birthDate=new Date(userdate.value);
+            let d1,m1,y1;
+            d1=birthDate.getDate();
+            m1=birthDate.getMonth() + 1;
+            y1=birthDate.getFullYear();
+            let d2,m2,y2;
+
+            d2=new Date().getDate();
+            m2=new Date().getMonth() + 1;
+            y2=new Date().getFullYear();
+
+            let d3,m3,y3;
+
+            y3=y2-y1;
+
+            if(m2>=m1){
+                m3=m2-m1;
+            }
+            else{
+                y3--;
+                m3=12+m2-m1;
+            }
+             if(d2>=d1){
+                d3=d2-d1;
+            }
+            else{
+                m3--;
+                d3=totalDayInmonth(y1,m1)+d2-d1;
+            }
+
+            let result=document.getElementById("result");
+        result.innerHTML=`You are <span>${y3}</span> years,<span> ${m3}</span> months and <span>${d3}</span> days old`;
+
+        }
+
+        function totalDayInmonth(year, month){
+            return new Date(year,month,0).getDate();
+        }
+
+
+
+
+        
+
+
+    </script>
+</body>
+</html>

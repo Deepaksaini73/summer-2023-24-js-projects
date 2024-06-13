@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark-theme</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        :root{
+            --primery-color:#d6dff1;
+            --seondery-color:black;
+        }
+        .dark-theme{
+             --primery-color:black;
+            --seondery-color:white; 
+        }
+        .content{
+            height: 100vh;
+            width: 100%;
+            background:var(--primery-color);
+            font-family: sans-serif;
+            position: relative;
+        }
+        nav{
+            width: 84%;
+            margin: auto;
+            padding: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+        }
+        
+        nav ul li{
+            list-style: none;
+            display: inline-block;
+            margin: 10px 20px;
+            text-decoration: none;
+        }
+        nav ul li a{
+            font-size: 20px;
+            color: var(--seondery-color);
+
+        }
+        nav ul li a:hover{
+            color: orange;
+        }
+        nav ul{
+            flex: 1;
+            text-align: right;
+           
+        }
+        a {
+            text-decoration: none;
+        }
+
+        .logo{
+            width: 100px;
+            cursor: pointer;
+        }
+        
+        nav img{
+            width: 30px;
+            cursor: pointer;
+        }
+        .info{
+            margin-left: 8%;
+            margin-top: 15%;
+        }
+        .info h1{
+            margin-bottom: 20px;
+            font-size: 70px;
+            color: var(--seondery-color);
+
+        }
+
+        span{
+            color: orange;
+            font-size: 80px;
+        }
+        .info p{
+            color:var(--seondery-color);
+            line-height: 22px;
+        }
+        .info a {
+            background-color: var(--seondery-color);
+            color: var(--primery-color);
+            padding: 10px 15px;
+            margin: 30px 0;
+            display: inline-block;
+            border-radius: 10px;
+        }
+        .info a:hover{
+          box-shadow: 0 5px 5px  #868282;
+        }
+        .img-box{
+            width: 45%;
+            height: 80%;
+            position: absolute;
+            bottom: 0;
+            right: 100px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        @media screen and (max-width:750px) {
+
+            
+            
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="content">
+        <nav>
+            <img class="logo" src="img/logo.png" alt="">
+            <ul>
+                <li><a href="">Home</a></li>
+                <li><a href="">Portfailo</a></li>
+                <li><a href="">product</a></li>
+                <li><a href="">Contact us</a></li>
+                <li><a href="">Help</a></li>
+            </ul>
+            <img id="icon" src="img/moon.png" alt="" >
+        </nav>
+        <div class="info">
+            <h1>I'M <span>DEEPAK</span> saini</h1>
+            <p>this is my official Portfailo site of my all work and project on web <br>development , UI and UX design. </p>
+            <a href="">Download CV</a>
+        </div>
+        <div class="img-box">
+            <img src="img/profile pic.png" alt="">
+        </div>
+    </div>
+
+
+
+    <script>
+        let icon= document.getElementById("icon");
+        icon.onclick= function (){
+            document.body.classList.toggle("dark-theme");
+            if(document.body.classList.contains("dark-theme")){
+                icon.src="img/sun.png";
+            }
+            else{
+                icon.src="img/moon.png";
+            }
+        }
+       
+
+    </script>
+</body>
+</html>

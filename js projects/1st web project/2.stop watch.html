@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>stop watch</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+           
+        }
+        body{
+            background-color: antiquewhite;
+        }
+        .stopwatch{
+            width: 90%;
+            height: 400px;
+            max-width: 650px;
+            background-image: linear-gradient(rgb(0,0,0,0.4),rgb(0,0,0,0.6)),url(img/1642272.jpg);
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            padding: 40px;
+            color: white;
+            margin: 200px auto 0;
+            z-index: 1;
+            
+        }
+        .stopwatch h1{
+            margin-top: 30px;
+            font-size: 64px;
+            font-weight: 300;
+            font-family: "Courier Prime", monospace;
+            font-style: normal;
+        }
+        .buttons{
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+
+        }
+        .buttons img{
+            width: 100px;
+            margin: 0 30px;
+            cursor: pointer;
+            box-sizing: border-box;
+            padding: auto;
+            border: 2px solid rgb(194, 189, 189);
+            border-radius: 50%;
+        }
+        .buttons img:nth-child(2){
+            width: 150px;
+            border: initial;
+        }
+        
+        
+        @media screen and (max-width:750px) {
+
+            .stopwatch{
+                width: 95%;
+            }
+            .buttons{
+                margin-top: 130px;
+            }
+            .buttons img{
+                width: 50px;
+                cursor: pointer;
+                box-sizing: border-box;
+                border: 2px solid rgb(194, 189, 189);
+                border-radius: 50%;
+            }
+            .buttons img:nth-child(2){
+              width: 80px;
+            }
+            .stopwatch h1{
+                margin-left: -20px;
+                padding: 0;
+            }
+        }
+
+       
+        @keyframes popup {
+
+            from{
+                width: 100px;
+            }
+            to{
+                width: 90px;
+            }
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="stopwatch">
+        <h1 id="time">00:00:00</h1>
+        <div class="buttons">
+            <img  src="img/Pause-Button-PNG-Pic.png" alt="" onclick="watchpause()" id="pause">
+            <img src="img/play.png" alt=""  onclick="watchplay()">
+            <img src="img/reset.png" alt="" onclick="watchreset()" id="reset">
+        </div>
+    </div>
+    
+    <script>
+
+        let [hours , minutes, seconds]=[0,0,0];
+        let time=document.getElementById("time");
+        let timer =null;
+
+        function stopwatch(){
+
+            seconds++;
+            if(seconds==60){
+                seconds=0;
+                minutes++;
+
+                if(minutes==60){
+                    minutes=0;
+                    hours++;
+                }
+            }
+            let h = hours < 10 ? "0" + hours : hours;
+            let m=minutes < 10 ? "0"+ minutes : minutes;
+            let s=seconds < 10 ? "0"+ seconds : seconds;
+            
+            time.innerHTML= h+":"+m+":"+s;
+        }
+
+        function watchplay(){
+
+            if(timer!==null){
+                clearInterval(timer);
+            }
+            timer=setInterval(stopwatch,1000);
+
+        }
+        function watchpause(){
+            clearInterval(timer);
+            document.getElementById("pause").classList.add("buttons img:nth-child(1),.buttons img:nth-child(3")
+        }
+        function watchreset(){
+            clearInterval(timer);
+            [hours , minutes, seconds]=[0,0,0];
+            let h =  "0" + hours;
+            let m="0"+ minutes ;
+            let s= "0"+ seconds ;
+            
+            time.innerHTML= h+":"+m+":"+s;
+
+        }
+
+    </script>
+</body>
+</html>
